@@ -28,38 +28,39 @@ This is the main core software of Xetal Kinsei Technology.
 The Server configuration file is in TrackingServer.conf
 
 
-ONLINE =0|1
+    ONLINE =0|1
 
 If 0 the server uses data.raw as values otherwise if 1 uses the sensor values in realtime
 
 In order to use the offline mode data.raw should be present in the execution folder
 
 
-CHANNEL=1....64
+
+    CHANNEL=1....64
 
 It indicates the wireless channel used
 
 Not needed if the sensors are wired (Sound Bar ...)
 
 
-THERMALMAP=0|1
+    THERMALMAP=0|1
 
 If 1 the TrackingServer runs the algorithms to estimate the thermal map for the given room
 
 
-SENSOR_SAMPLING= (>=100ms)
+    SENSOR_SAMPLING= (>=100ms)
 
 It is the sensors sampling period, if not present 330ms will be used
 
 
-SAMPLES_AVERAGE= (>=1)
+    SAMPLES_AVERAGE= (>=1)
 
 Used to reduce the sensors noise avaraging the values
 
 The internal update period is SENSOR_SAMPLING * SAMPLES_AVERAGE
 
 
-COMPORT= ...
+    COMPORT= ...
 
 Specifies the serial port where the host sensor is connected.
 
@@ -68,177 +69,177 @@ For example /dev/tty.. in linux or COMx(BUG:no more than 9) in Windows
 If changed to a wrong one the system will stop to work
 
 
-SERVERPORT=2005
+    SERVERPORT=2005
 
 It is Network Port where the server listen waiting for data clients 
 
 Most of the clients connect to 2005 by default, change it only if you know what you are doing
 
 
-CONFIG_SERVERPORT=6666
+    CONFIG_SERVERPORT=6666
 
 It is Network Port where the server listen waiting for tuning client 
 
 Most of the clients connect to 6666 by default, change it only if you know what you are doing
 
 
-MONITORED_AREA=corners*x:y*x:y*..
+    MONITORED_AREA=corners*x:y*x:y*..
 
 Specifies the monitored area as a polygon on the cartesian plane
 
 It is usually the room monitored
 
 
-PZONE=corners*x:y*x:y*..
+    PZONE=corners*x:y*x:y*..
 
 Specifies the entry/exit zone as a polygon on the cartesian plane
 
 This is a special part of the monitored area where persons are supposed to enter and exit the virtual #room
 
 
-CZONE=x:y*radius
+    CZONE=x:y*radius
 
 Specifies the entry/exit zone as a circle on the cartesian plane
 
 This is a special part of the monitored area where persons are supposed to enter and exit the virtual #room
 
 
-NOTMONITORED_PZONE=corners*x:y*x:y*..
+    NOTMONITORED_PZONE=corners*x:y*x:y*..
 
 Specifies the not monitored area as a polygon on the cartesian plane
 
 
-NOTMONITORED_CZONE=x:y*radius
+    NOTMONITORED_CZONE=x:y*radius
 
 Specifies the not monitored area as a circle on the cartesian plane
 
 
-TRES=8
+    TRES=8
 
 This is a sensor parameter do not change
 
 
-TVIEW=5
+    TVIEW=5
 
 This is a sensor parameter do not change
 
 
-NSENS=n
+    NSENS=n
 
 It indicates the number of sensors to be initialized
 
 
-SENSORANGLE_NR=N|R * NSENS
+    SENSORANGLE_NR=N|R * NSENS
 
 It indicates the direction of the sensors
 
 
-SEN=address*x*y*angle
+    SEN=address*x*y*angle
 
 Used to specify the sensor position and physical address
 
 Be carefull changing this 
 
 
-BACKGROUND_RESET_DELAY
+    BACKGROUND_RESET_DELAY
 
 Specifies the delay in Seconds before a background Reset in case of lost of communication between #sensors and system
 
 Only for wireless sensors, Sound Bar not affected in normal operation
 
 
-BACKGROUND_ALFA= 0 .... 1
+    BACKGROUND_ALFA= 0 .... 1
 
 ...
 
 
-BACKGROUND_THRESHOLD=0 ... 1
+    BACKGROUND_THRESHOLD=0 ... 1
 
 ...
 
 
-BACKGROUND_TEMPERATURE_THRESHOLD=
+    BACKGROUND_TEMPERATURE_THRESHOLD=
 
 ...
 
 
-FUSION_BACKGROUND_THRESHOLD=
+    FUSION_BACKGROUND_THRESHOLD=
 
 This value indicates the values difference to be considered normal in the fusion
 
 The threshold must be enough high to clean the fusion
 
 
-FUSION_BACKGROUND_MAX_TEMP=
+    FUSION_BACKGROUND_MAX_TEMP=
 
 Max temperature value allowed for the background of the fusion level
 
 
-FUSION_CONSENSUM_FACTOR=0 ... 1 
+    FUSION_CONSENSUM_FACTOR=0 ... 1 
 
 Higher it is, higher is the priority that is given to positions with higher sensors consensum
 
 
-FUSION_THRESHOLD=
+    FUSION_THRESHOLD=
 
 The fusion calculated value and the background must have a difference of at least this threshold
 
 
-TRACKING_PERSON_MAXSPEED=
+    TRACKING_PERSON_MAXSPEED=
 
 Specifies in m/s the maximum speed of a person
 
 
-TRACKING_MODE=0|1
+    TRACKING_MODE=0|1
 
 If 0 uses a circle with the radius calculated from TRACKING_PERSON_MAXSPEED
 
 If 1 uses a Gaussian Bell calculated from TRACKING_PERSON_MAXSPEED
 
 
-TRACKING_CONSENSUM_FACTOR=
+    TRACKING_CONSENSUM_FACTOR=
 
 In presence of more than one person occlusion is possible and this parameter increase the priority of possitions not occluded
 
 
-TRACKING_EDGE_DISTANCE=
+    TRACKING_EDGE_DISTANCE=
 
 Minimum distance of a person from the wall in cm
 
 
-TRACKING_MIN_DISTANCE_PERSONS
+    TRACKING_MIN_DISTANCE_PERSONS
 
 Minimum distance between persons to be considered two (distance between centrum of a persons)
 
 
-TRACKING_MAX_#PERSONS=
+    TRACKING_MAX_#PERSONS=
 
 Max number of persons to be tracked, it currently works quite accuratly with 1 and 2  and with good results up to 4
 
 
-TRACKING_FALLBACK=0|1
+    TRACKING_FALLBACK=0|1
 
 If enabled it permit the system to recover from a lost person
 
 Needed at 1 on the KinseiBar where no entry and exit zones are present as default
 
 
-TRACKING_LOW_FALLBACK_DELAY=
+    TRACKING_LOW_FALLBACK_DELAY=
 
 If the tracker shows a number of persons higher than the counter + TRACKING_FALLBACK_TH_DOWN wait this dalay in ms before a fallback occurs
 
 
-TRACKING_HIGH_FALLBACK_DELAY=
+    TRACKING_HIGH_FALLBACK_DELAY=
 
 If the tracker shows a number of persons lower than the counter + TRACKING_FALLBACK_TH_UP wait this dalay in ms before a fallback occurs
 
 
-TRACKING_FALLBACK_TH_UP=
+    TRACKING_FALLBACK_TH_UP=
 
 used by TRACKING_HIGH_FALLBACK_DELAY
 
 
-TRACKING_FALLBACK_TH_DOWN=float
+    TRACKING_FALLBACK_TH_DOWN=float
 
 used by TRACKING_LOW_FALLBACK_DELAY
 
@@ -611,33 +612,36 @@ Reset Offset
 To update the firmware follow the procedure below.  
 NOTE: Proceed only if you know what you are doing. Contact Xetal in case of doubt.
 
-# Edison Version
 
-On the edison board
+Xetal7688
+    
+    On the xetal7688 board
 
-  ssh root@xetal.....  
-  cd /TrackingServer  
-  killall TrackingServer && rm TrackingServer  
-  exit  
-  
-On the host
+    ssh root@xetal.....  
+    service xetal stop  
+    exit  
+    
+    On the host 
 
-  scp TrackingServer root@xetal...:TrackingServer/.  
-  
-# Xetal7688  
-  
-On the xetal7688 board
+    scp TrackingServer root@xetal...:TrackingServer/.  
+    
+    On the xetal7688 board
 
-  ssh root@xetal.....  
-  service xetal stop  
-  exit  
-  
-On the host 
+    ssh root@xetal.....  
+    service xetal start  
+    exit  
 
-  scp TrackingServer root@xetal...:TrackingServer/.  
-  
-On the xetal7688 board
 
-  ssh root@xetal.....  
-  service xetal start  
-  exit  
+Edison Version
+
+    On the edison board
+
+    ssh root@xetal.....  
+    cd /TrackingServer  
+    killall TrackingServer && rm TrackingServer  
+    exit  
+    
+    On the host
+
+    scp TrackingServer root@xetal...:TrackingServer/.  
+    
