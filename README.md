@@ -1,31 +1,31 @@
 # TrackingServer
 
 
-This is the main core software of Xetal Kinsei Technology.
+The TrackingServer implements all core functions related to the Xetal Kinsei Technology.
 
 
 ## Main Features
 
 
--People localization with accuracy up to 30cm
+- People localization with accuracy up to 30cm
 
--Configurable Thermal Map
+- Configurable Thermal Map
 
--Probability map
+- Probability map
 
--People Counting
+- People Counting
 
--Supports any room shape and up to 10 kinsei sensors
+- Supports any room shape and up to 10 kinsei sensors
 
--Online on the fly tuning
+- Online on the fly tuning
 
--Socket tcp Interfaces (tuning and data )
+- Socket tcp Interfaces (separate tuning and data interfaces on two ports)
 
 
 ## Configuration File Details
 
 
-The Server configuration file is in TrackingServer.conf
+The Server configuration file can be found in TrackingServer.conf
 
 
     ONLINE =0|1
@@ -40,7 +40,7 @@ In order to use the offline mode data.raw should be present in the execution fol
 
 It indicates the wireless channel used
 
-Not needed if the sensors are wired (Sound Bar ...)
+Not needed if the sensors are wired (e.g. Development Kit 2.0 and 2.1)
 
 
     THERMALMAP=0|1
@@ -150,17 +150,16 @@ Only for wireless sensors, Sound Bar not affected in normal operation
 
     BACKGROUND_ALFA= 0 .... 1
 
-...
+Indicates the minimum difference between the background and the measured temperature in order to assume there is a person at the measurement location
 
 
     BACKGROUND_THRESHOLD=0 ... 1
 
-...
-
+Represents the weight of the new background temperature versus the old one when caculating the new background temperature
 
     BACKGROUND_TEMPERATURE_THRESHOLD=
 
-...
+Represents the minimum background temperature with the respect to the average room temperature"
 
 
     FUSION_BACKGROUND_THRESHOLD=
@@ -248,9 +247,7 @@ used by TRACKING_LOW_FALLBACK_DELAY
 ## Data Interface Details
 
 
-The data interface is continuously listening on all the ip addresses of the host machine on the port specified inside the TrackingServer.conf file (Default is 2005).
-
-In order to communicate with it, a tcp connection can be used and the following commands (only) will be accepted. Any other command will result in a generic error.
+The data interface is continuously listening on all the ip addresses of the host machine on the port specified inside the TrackingServer.conf file (Default is 2005). In order to communicate with it, a tcp connection can be used and the following commands (only) will be accepted. Any other command will result in a generic error.
 
 IMPORTANT: all position values must be divided by 10 to get the float number
 
@@ -407,18 +404,11 @@ Error generic
     
 ## Tuning Interface Details
 
-The tuning interface is continuously listening on all the ip addresses of the host machine on the port specified inside the TrackingServer.conf file (Default is 6666).
+The tuning interface is continuously listening on all the ip addresses of the host machine on the port specified inside the TrackingServer.conf file (Default is 6666). In order to communicate with it, a tcp connection can be used and the following commands (only) will be accepted. Any other command will result in a generic error.
 
-In order to communicate with it, a tcp connection can be used and the following commands (only) will be accepted. Any other command will result in a generic error.
-
-The tuning interface allows one single client (at a time) to be connected.
+The tuning interface allows one single client (at a time) to be connected. The protocol is completely custom and it accepts a first byte in order to discern the kind of message followed by other info if required. The system will answer with a message that starts with the same byte followed by the required info.
  
-The protocol is completely custom and it accepts a first byte in order to discern the kind of message followed by other info if required.
-
-The system will answer with a message that starts with the same byte followed by the required info.
- 
-IMPORTANT:  All values are to be given and are receoved multiplier by a factor 100 and represented over two bytes (unsigned shorts)
-Odd commands are used to get variables. Even commands are used to set variables
+IMPORTANT:  All values are to be given and are receoved multiplier by a factor 100 and represented over two bytes (unsigned shorts). Odd commands are used to get variables. Even commands are used to set variables
 
 Command:
 
