@@ -4,7 +4,7 @@
 This is the main core software of Xetal Kinsei Technology.
 
 
-# Main Features
+## Main Features
 
 
 -People localization with accuracy up to 30cm
@@ -22,7 +22,7 @@ This is the main core software of Xetal Kinsei Technology.
 -Socket tcp Interfaces (tuning and data )
 
 
-# Configuration File Details
+## Configuration File Details
 
 
 The Server configuration file is in TrackingServer.conf
@@ -245,7 +245,7 @@ used by TRACKING_LOW_FALLBACK_DELAY
 
 
 
-# Data Interface Details
+## Data Interface Details
 
 
 The data interface is continuously listening on all the ip addresses of the host machine on the port specified inside the TrackingServer.conf file (Default is 2005).
@@ -405,7 +405,7 @@ Error generic
     0x65
 
     
-# Tuning Interface Details
+## Tuning Interface Details
 
 The tuning interface is continuously listening on all the ip addresses of the host machine on the port specified inside the TrackingServer.conf file (Default is 6666).
 
@@ -607,13 +607,13 @@ Reset Offset
 
     0xfd
 
-# Software update  
+## Software update  
 
 To update the firmware follow the procedure below.  
 NOTE: Proceed only if you know what you are doing. Contact Xetal in case of doubt.
 
 
-Xetal7688
+### Xetal7688
     
     On the xetal7688 board
 
@@ -632,7 +632,7 @@ Xetal7688
     exit  
 
 
-Edison Version
+### Edison Version
 
     On the edison board
 
